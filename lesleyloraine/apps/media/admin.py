@@ -29,7 +29,6 @@ class ImageAdmin(BaseImageAdmin, UnsavedChangesAdmin):
         ('alt','use_png'),
         'credit',
         'caption',
-        'tags'
     )
     
 

@@ -214,8 +214,8 @@ LEGACY_URL_IGNORE_LIST = []
 #==============================================================================
 AWS_ACCESS_KEY_ID       = env.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY   = env.get("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = env.get("AWS_STORAGE_BUCKET_NAME", 'lesleyloraine')
-AWS_STORAGE_BUCKET_NAME_MEDIA = env.get("AWS_STORAGE_BUCKET_NAME_MEDIA", 'lesleyloraine')
+AWS_STORAGE_BUCKET_NAME = env.get("AWS_STORAGE_BUCKET_NAME", 'lesleyloraine-dev')
+AWS_STORAGE_BUCKET_NAME_MEDIA = env.get("AWS_STORAGE_BUCKET_NAME_MEDIA", 'lesleyloraine-dev')
 
 
 AWS_STATIC_FOLDER = 'static'
