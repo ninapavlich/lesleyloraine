@@ -20,7 +20,7 @@ class PageSlide(SlideMolecule):
     parent = models.ForeignKey('page.Page')
 
 class Page(BasePage):
-    default_template = 'page_base'
+    default_template = 'page-base'
     slide_class = PageSlide
 
     form = models.ForeignKey('form.Form', blank=True, null=True)
