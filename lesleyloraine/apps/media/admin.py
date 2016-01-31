@@ -53,17 +53,6 @@ class ImageAdmin(BaseImageAdmin, UnsavedChangesAdmin):
     def full_list(self, obj):
         
         output = ''
-        all_tags = obj.tags.all()
-        if len(all_tags) > 1:
-            output += '<strong>Tags: </strong>'
-
-        elif len(all_tags) > 0:
-            output += '<strong>Tag: </strong>'
-
-        for tag in all_tags:
-            output += ('<a href="?tags__id__exact=%s">%s</a> '%(tag.pk, tag.title))
-
-        output += '<br /><br />'
         output += '<strong>Caption: </strong>%s<br /><br />'%(obj.caption)
         output += '<strong>Credit: </strong>%s<br /><br />'%(obj.credit)
         output += '<strong>Alt: </strong>%s'%(obj.alt)
