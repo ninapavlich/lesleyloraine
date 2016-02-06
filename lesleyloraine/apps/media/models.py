@@ -14,12 +14,16 @@ from carbon.compounds.media.models import Image as BaseImage
 from carbon.compounds.media.models import Media as BaseMedia
 from carbon.compounds.media.models import SecureMedia as BaseSecureMedia
 from carbon.compounds.media.models import MediaTag as BaseMediaTag
+from carbon.compounds.media.models import MediaFolder as BaseMediaFolder
 
 
 
 
 
 class Image(BaseImage):
+
+    tags = models.ManyToManyField('media.MediaTag', blank=True, related_name='%(app_label)s_%(class)s_tags')
+    folder = models.ForeignKey('media.ImageFolder', null=True, blank=True, related_name='%(app_label)s_%(class)s_folder')
 
     variants = ('thumbnail',
         'square_200', 'width_200_fill', 'square_400', 
@@ -247,7 +251,9 @@ class Image(BaseImage):
 
 
 class Media(BaseMedia):
-    pass
+    
+    tags = models.ManyToManyField('media.MediaTag', blank=True, related_name='%(app_label)s_%(class)s_tags')
+    folder = models.ForeignKey('media.MediaFolder', null=True, blank=True, related_name='%(app_label)s_%(class)s_folder')
 
 
 # class SecureMedia(BaseSecureMedia):
@@ -256,3 +262,11 @@ class Media(BaseMedia):
 class MediaTag(BaseMediaTag):
     publish_by_default = True
     item_classes = [Image, Media] #SecureMedia    
+
+class ImageFolder(BaseMediaFolder):
+    item_classes = [Image]
+    category_property_name = 'folder'  
+
+class MediaFolder(BaseMediaFolder):
+    item_classes = [Media]
+    category_property_name = 'folder' 

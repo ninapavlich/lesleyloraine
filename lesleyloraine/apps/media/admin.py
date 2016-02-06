@@ -1,9 +1,11 @@
 from django.contrib import admin
 
+from carbon.atoms.admin.media import FolderTagAdmin as BaseFolderTagAdmin
 from carbon.compounds.media.admin import ImageAdmin as BaseImageAdmin
 from carbon.compounds.media.admin import MediaAdmin as BaseMediaAdmin
 from carbon.compounds.media.admin import SecureMediaAdmin as BaseSecureMediaAdmin
 from carbon.compounds.media.admin import MediaTagAdmin as BaseMediaTagAdmin
+from carbon.compounds.media.admin import MediaFolderAdmin as BaseMediaFolderAdmin
 
 from .models import *
 from .forms import *
@@ -13,25 +15,30 @@ from django_unsaved_changes.admin import UnsavedChangesAdmin
 
 
 
-class ImageAdmin(BaseImageAdmin, UnsavedChangesAdmin):
+class ImageAdmin(BaseFolderTagAdmin, BaseImageAdmin, UnsavedChangesAdmin):
 
+    folder_model = ImageFolder
+    tag_model = MediaTag
     batch_url_name = "admin_image_batch_view"
-
     form = ImageAdminForm
+
 
     core_fields = (
         'title',
         ('image','preview'),
         ('square_crop', 'width_1200_wide_crop'),
        
+        ('dimensions'),
         ('image_variants'),
+        
         ('clean_filename_on_upload','allow_overwrite'),
         ('alt','use_png'),
         'credit',
         'caption',
+        'folder',
+        'tags'
     )
     
-
     meta_fields = (
         ('version'),
         ('created_date', 'created_by'),
@@ -49,37 +56,32 @@ class ImageAdmin(BaseImageAdmin, UnsavedChangesAdmin):
         })
     )
 
-    #TEMPORARY:
-    def full_list(self, obj):
-        
-        output = ''
-        output += '<strong>Caption: </strong>%s<br /><br />'%(obj.caption)
-        output += '<strong>Credit: </strong>%s<br /><br />'%(obj.credit)
-        output += '<strong>Alt: </strong>%s'%(obj.alt)
-        return output
-    full_list.allow_tags = True
 
-    list_display = ('title','preview','image_width', 'image_height', 'display_size', 'full_list')
-    list_display_links = ('title', 'preview')
-
-    readonly_fields = (
-        "version", "created_date", "created_by", "modified_date", "modified_by",
-        "preview", "image_variants", "tag_list", "full_list"
-    )
+    autocomplete_lookup_fields = {
+        'fk': ('folder',),
+        'm2m': ('tags',)
+    }
+    raw_id_fields = ( 'tags','folder')
 
 
 
-class MediaAdmin(BaseMediaAdmin, UnsavedChangesAdmin):
-    pass
-
-# class SecureMediaAdmin(BaseSecureMediaAdmin):
-#     pass
+class MediaAdmin(BaseMediaAdmin, BaseFolderTagAdmin, UnsavedChangesAdmin):
+    folder_model = MediaFolder
+    tag_model = MediaTag
 
 class MediaTagAdmin(BaseMediaTagAdmin, UnsavedChangesAdmin):
-    pass    
+    pass 
+
+class MediaFolderAdmin(BaseMediaFolderAdmin, UnsavedChangesAdmin):
+    pass 
+
+class ImageFolderAdmin(BaseMediaFolderAdmin, UnsavedChangesAdmin):
+    pass 
 
 
 admin.site.register(Image, ImageAdmin)
 admin.site.register(Media, MediaAdmin)    
-# admin.site.register(SecureMedia, SecureMediaAdmin)  
 admin.site.register(MediaTag, MediaTagAdmin)        
+admin.site.register(MediaFolder, MediaFolderAdmin)        
+admin.site.register(ImageFolder, ImageFolderAdmin)        
+
