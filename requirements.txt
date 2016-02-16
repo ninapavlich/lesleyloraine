@@ -9,7 +9,7 @@ csscompressor==0.9.3
 distribute==0.6.38
 dj-database-url==0.1.2
 django-ace==1.0.2
-django-ace-overlay==0.2
+django-ace-overlay==0.3
 django-appconf==1.0.1
 django-batch-uploader==0.10.1
 -e git+https://github.com/ninapavlich/django-carbon.git@5e4022c8a09d946d096ec4b7ded0c4ee03af9017#egg=django_carbon-dev
@@ -42,7 +42,7 @@ libsass==0.7.0
 newrelic==2.44.0.36
 pilkit==1.1.12
 ply==3.4
-psycopg2==2.5.4
+psycopg2==2.6.1
 pylibmc==1.4.1
 pyparsing==2.0.3
 python-dateutil==1.5

@@ -81,8 +81,8 @@ DEBUG = env.get("DEBUG", True)
 TEMPLATE_DEBUG = DEBUG
 HTML_MINIFY = env.get("HTML_MINIFY", False)
 
-SITE_TITLE = 'Visual Arts by Lesley Loraine'
-SITE_DESCRIPTION = 'Photo video editor based in Boulder, Colorado'
+SITE_TITLE = 'Visual Expressions'
+SITE_DESCRIPTION = 'Lesley Harburg is a photo video editor based in Boulder, Colorado'
 GRAPPELLI_ADMIN_TITLE = SITE_TITLE
 GRAPPELLI_INDEX_DASHBOARD = 'lesleyloraine.apps.core.dashboard.AdminDashboard'
 
