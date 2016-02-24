@@ -419,7 +419,7 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 #==============================================================================
 # Email Settings
 #==============================================================================
-HELP_EMAIL = "lesleyloraine@gmail.com"
+HELP_EMAIL = "lld4060@gmail.com"
 HELP_PHONE = ''
 DEFAULT_FROM_EMAIL = env.get("EMAIL_SENDER", "lld4060@gmail.com")
 DEFAULT_FROM_EMAIL_NAME = SITE_TITLE
