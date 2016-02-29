@@ -39,8 +39,8 @@ function main() {
     var pad_vertical = 0;
     var pad_horizontal = 0;
 
-    var override_image_path = "https://lesleyloraine.s3.amazonaws.com/media/image/icons.png";
-    var override_retina_image_path = "https://lesleyloraine.s3.amazonaws.com/media/image/icons@2x.png";
+    var override_image_path = "https://lesleyloraine-dev.s3.amazonaws.com/media/image/icons.png";
+    var override_retina_image_path = "https://lesleyloraine-dev.s3.amazonaws.com/media/image/icons@2x.png";
     
 
     // two quick checks
@@ -330,7 +330,7 @@ function generateCSSContent(items, image, retina_image, w, h, pad_vertical, pad_
 
 function generateIconBlockSection(items, image, pad_vertical, pad_horizontal){
     var output='                                \
-/* THIS FILE IS GENREATED by export_icons.js, do not modify - nina@cgpartnersllc.com */ \
+/* THIS FILE IS GENREATED by export_icons.js, do not modify - nina@ninalp.com */ \
 /* ICON BLOCK STYLE */                          \
 .icon_block{                                    \
     position:relative;                          \
@@ -609,7 +609,7 @@ only screen and (min-device-pixel-ratio: 1.5) {                 \
 function generateIconBlockMixin(items, image, pad_vertical, pad_horizontal){
 
     var output='                                \
-/* THESE MIXINS ARE GENREATED by export_icons.js, do not modify - nina@cgpartnersllc.com */ \
+/* THESE MIXINS ARE GENREATED by export_icons.js, do not modify - nina@ninalp.com */ \
 @mixin icon_block() {                               \
     position:relative;                              \
     pointer-events:none;                            \
@@ -892,7 +892,7 @@ function generateHTMLExample(items, css_icon_block_path, css_has_sprite_path, cs
         </style>\
     </head>\
     <body>\
-        <!-- THIS FILE IS GENREATED by export_icons.js - nina@cgpartnersllc.com -->\
+        <!-- THIS FILE IS GENREATED by export_icons.js - nina@ninalp.com -->\
         <h1>Sprite Sheet</h1>\
         <div class="main-content-inner">\
              <!-- BEGIN SPRITE SHOWCASE -->\
